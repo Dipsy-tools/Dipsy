@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIPSY</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #AFDCEC;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .hint-text {
+      font-size: 20px;
+      color: #ff5e7e;
+      margin-bottom: 10px;
+      animation: pulse 2s infinite;
+      transition: opacity 2s ease;
+    }
+
+    .hint-text.fade-out {
+      opacity: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .door-container {
+      position: relative;
+      width: 300px;
+      height: 500px;
+      perspective: 1500px;
+    }
+
+    .door {
+      width: 100%;
+      height: 100%;
+      background-image: url('a.png');
+      background-size: cover;
+      background-position: center;
+      transition: transform 2s ease-in-out;
+      transform-origin: left;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .door.open {
+      transform: rotateY(-120deg);
+    }
+
+    .content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      background: linear-gradient(to bottom right, #fff0f5, #ffd6e0);
+      border-radius: 10px;
+    }
+
+    .content.show {
+      display: flex;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .love-text {
+      font-size: 36px;
+      font-family: 'Great Vibes', cursive;
+      background: linear-gradient(45deg, red, purple, blue, red);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rgbMove 4s infinite linear;
+      margin-bottom: 10px;
+    }
+
+    @keyframes rgbMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ff6b81;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .romantic-words {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #a33;
+      padding: 0 10px;
+      min-height: 60px;
+    }
+
+    .flower {
+      width: 300px;
+      opacity: 0;
+      transform: scale(0.2);
+      transition: all 1s ease;
+      margin-top: 10px;
+    }
+
+    .flower.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- TEKS ATAS PINTU -->
+<div class="hint-text" id="hintText">Ketuk Pintunya sayang🤗</div>
+
+<!-- PINTU & ISI CINTA -->
+<div class="door-container" onclick="openDoor()">
+  <div class="door" id="door"></div>
+  <div class="content" id="content">
+    <div class="love-text">I Love You</div>
+    <img src="y.jpg" alt="Pasangan" class="photo">
+    <div class="romantic-words" id="romanticText"></div>
+    <p>💙SITI-AISYAH - DIPSY💙</p>
+    <p>🤗🤗🤗</p>
+    <img id="flowerImg" class="flower" src="bunga.png" alt="Bunga Mekar">
+  </div>
+</div>
+
+<audio id="bgMusic" src="janji.mp3" preload="auto"></audio>
+
+<script>
+  function openDoor() {
+    const door = document.getElementById('door');
+    const content = document.getElementById('content');
+    const music = document.getElementById('bgMusic');
+    const hint = document.getElementById('hintText');
+    const flower = document.getElementById('flowerImg');
+
+    door.classList.add('open');
+    hint.classList.add('fade-out');
+
+    setTimeout(() => {
+      content.classList.add('show');
+      flower.classList.add('show'); // langsung muncul bareng konten
+      music.play();
+      typeRomanticText();
+    }, 1800);
+  }
+
+  function typeRomanticText() {
+    const text = "Kamu adalah bunga yang mekar di hatiku setiap hari. Terima kasih telah hadir dalam hidupku.🥰";
+    const container = document.getElementById('romanticText');
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        container.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 50);
+      }
+    }
+
+    type();
+  }
+</script>
+
+</body>
+</html>
