@@ -20,6 +20,7 @@
 
     .hint-text {
       font-size: 20px;
+      font-weight: 'bold', cursive;
       color: #ff5e7e;
       margin-bottom: 10px;
       animation: pulse 2s infinite;
@@ -88,7 +89,7 @@
 
     .love-text {
       font-size: 36px;
-      font-family: 'Great Vibes', cursive;
+      font-family: 'bold', cursive;
       background: linear-gradient(45deg, red, cyan, fuchsia, purple, blue, red, cyan, fuchsia, cyan, magenta);
       background-size: 400% 400%;
       -webkit-background-clip: text;
@@ -132,6 +133,17 @@
       opacity: 1;
       transform: scale(1);
     }
+
+    .love-rgb {
+  font-size: 20px;
+  font-family: 'bold', cursive;
+  background: linear-gradient(45deg, red, cyan, fuchsia, purple, blue, red, cyan, fuchsia, cyan, magenta);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbMove 4s infinite linear;
+  margin-top: 10px;
+}
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
@@ -140,14 +152,14 @@
 <!-- TEKS ATAS PINTU -->
 <div class="hint-text" id="hintText">Ketuk Pintunya sayang🤗</div>
 
-<!-- PINTU & ISI CINTA -->
+<!-- PINTU & ISINYA -->
 <div class="door-container" onclick="openDoor()">
   <div class="door" id="door"></div>
   <div class="content" id="content">
     <div class="love-text">I Love You</div>
     <img src="y.jpg" alt="Pasangan" class="photo">
     <div class="romantic-words" id="romanticText"></div>
-    <p>💙SITI-AISYAH - DIPSY💙</p>
+    <div class="love-rgb">💙~SITI-AISYAH - DIPSY~💙</div>
     <img id="flowerImg" class="flower" src="bunga.png" alt="Bunga Mekar">
   </div>
 </div>
@@ -167,7 +179,7 @@
 
     setTimeout(() => {
       content.classList.add('show');
-      flower.classList.add('show'); // langsung muncul bareng konten
+      flower.classList.add('show'); 
       music.play();
       typeRomanticText();
     }, 1800);
