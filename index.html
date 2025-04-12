@@ -121,20 +121,26 @@
       min-height: 60px;
       font-weight: bold;
     }
+    
+    .vip {
+      font-size: 30px;
+      font-family: 'Great Vibes', cursive;
+      
+    }
 
     .flower {
       width: 300px;
       opacity: 0;
       transform: scale(0.2);
       transition: all 1s ease;
-      margin-top: 40px;
+      margin-top: 60px;
     }
 
     .flower.show {
       opacity: 1;
       transform: scale(1);
     }
-
+    
     .love-rgb {
   font-size: 20px;
   font-family: 'bold', cursive;
@@ -153,7 +159,7 @@
 <!-- TEKS ATAS PINTU -->
 <div class="hint-text" id="hintText">Ketuk Pintunya sayang🤗</div>
 
-<!-- PINTU & ISINYA -->
+<!-- PINTU & ISI CINTA -->
 <div class="door-container" onclick="openDoor()">
   <div class="door" id="door"></div>
   <div class="content" id="content">
@@ -180,7 +186,7 @@
 
     setTimeout(() => {
       content.classList.add('show');
-      flower.classList.add('show'); 
+      flower.classList.add('show'); // langsung muncul bareng konten
       music.play();
       typeRomanticText();
     }, 1800);
